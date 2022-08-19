@@ -5,10 +5,10 @@ const SubmitSuccess = () => {
   return (
     <>
       <Typography variant="h5" gutterBottom>
-        Thank are done!.
+        You are done!
       </Typography>
       <Typography variant="subtitle1">
-        Please checkout other pokemons here.
+        Click here to learn about pokemons.
       </Typography>
     </>
   );

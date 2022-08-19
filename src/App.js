@@ -1,10 +1,13 @@
 import "./App.css";
+import Layout from "./components/ui/Layout";
 import KnowUserBetter from "./components/knowUserBetter/KnowUserBetter";
 
 function App() {
   return (
     <div className="App">
-      <KnowUserBetter />
+      <Layout>
+        <KnowUserBetter />
+      </Layout>
     </div>
   );
 }

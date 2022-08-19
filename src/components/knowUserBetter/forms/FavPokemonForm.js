@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import InputField from "./InputField";
-
-import PokemonCard from "../pokemon/PokemonCard";
+import Pokemons from "../pokemon/Pokemons";
+import classes from "./FavPokemonForm.module.css";
 
 const FavPokemonForm = (props) => {
   const {
@@ -11,51 +11,23 @@ const FavPokemonForm = (props) => {
     setFieldValue,
   } = props;
 
-  const dummyPokemons = [
-    {
-      id: 1,
-      name: "bulbasaur",
-    },
-    {
-      id: 2,
-      name: "ivysaur",
-    },
-    {
-      id: 3,
-      name: "venusaur",
-    },
-    {
-      id: 4,
-      name: "charmander",
-    },
-    {
-      id: 5,
-      name: "charmeleon",
-    },
-    {
-      id: 6,
-      name: "charizard",
-    },
-  ];
-
-  const pokemonCards = dummyPokemons.map((item) => (
-    <Grid item xs={4} key={item.id}>
-      <PokemonCard name={item.name} setFieldValue={setFieldValue} />
-    </Grid>
-  ));
-
   return (
     <>
-      <Typography variant="h6" gutterBottom>
-        User Details
+      <Typography component="h2" variant="h5" align="left" marginBottom={1}>
+        Pick your favourite Pokemon
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <InputField name={pokemon.name} label={pokemon.label} fullWidth />
+          <InputField
+            name={pokemon.name}
+            label={pokemon.label}
+            fullWidth
+            marginBottom={4}
+          />
         </Grid>
       </Grid>
-      <Grid container spacing={2}>
-        {pokemonCards}
+      <Grid container spacing={2} marginTop={3}>
+        <Pokemons setFieldValue={setFieldValue} />
       </Grid>
     </>
   );

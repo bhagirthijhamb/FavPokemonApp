@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 import { Formik, Form } from "formik";
 
@@ -13,6 +14,8 @@ import UserDetailsForm from "./forms/UserDetailsForm";
 import FavPokemonForm from "./forms/FavPokemonForm";
 import SubmitConfirmation from "./SubmitConfirmation";
 import SubmitSuccess from "./SubmitSuccess";
+
+import classes from "./KnowUserBetter.module.css";
 
 import validationSchema from "./formModel/validationSchema";
 import knowUserBetterFormModel from "./formModel/knowUserBetterFormModel";
@@ -39,6 +42,7 @@ function renderStepContent(step, setFieldValue) {
 }
 
 const KnowUserBetter = () => {
+  // const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
@@ -69,53 +73,56 @@ const KnowUserBetter = () => {
   }
 
   return (
-    <Card variant="outlined">
-      <Typography component="h1" variant="h4" align="center">
-        Know User Better
-      </Typography>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <>
-        {activeStep === steps.length ? (
-          <SubmitSuccess />
-        ) : (
-          <Formik
-            initialValues={formInitialValues}
-            validationSchema={currentValidationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting, setFieldValue }) => {
-              return (
-                <Form id={formId}>
-                  {renderStepContent(activeStep, setFieldValue)}
+    <Card>
+      <CardContent>
+        <Typography component="h1" variant="h4" align="center" marginBottom={2}>
+          Know User Better
+        </Typography>
+        <Stepper activeStep={activeStep} className={classes.stepper}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <>
+          {activeStep === steps.length ? (
+            <SubmitSuccess />
+          ) : (
+            <Formik
+              initialValues={formInitialValues}
+              validationSchema={currentValidationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting, setFieldValue }) => {
+                return (
+                  <Form id={formId}>
+                    {renderStepContent(activeStep, setFieldValue)}
 
-                  <div>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack}>Back</Button>
-                    )}
-                    <div>
+                    <div className={classes.buttons}>
+                      {activeStep !== 0 && (
+                        <Button onClick={handleBack} className={classes.button}>
+                          Back
+                        </Button>
+                      )}
                       <Button
                         disabled={isSubmitting}
                         type="submit"
                         variant="contained"
                         color="primary"
+                        className={classes.button}
                       >
-                        {isLastStep ? "Sumit" : "Next"}
+                        {isLastStep ? "Submit" : "Next"}
                       </Button>
                       {isSubmitting && <CircularProgress size={24} />}
                     </div>
-                  </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        )}
-      </>
+                  </Form>
+                );
+              }}
+            </Formik>
+          )}
+        </>
+      </CardContent>
     </Card>
   );
 };

@@ -1,0 +1,11 @@
+.buttons {
+  display: "flex";
+  justify-content: "flex-end";
+  margin-top: 50px;
+}
+.button {
+  margin: 0 10px;
+}
+.stepper {
+  margin-bottom: 40px;
+}
