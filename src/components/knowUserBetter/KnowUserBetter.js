@@ -74,8 +74,18 @@ const KnowUserBetter = () => {
   return (
     <Card>
       <CardContent>
-        <Typography component="h1" variant="h4" align="center">
-          Know User Better
+        <Typography
+          component="h1"
+          variant="h4"
+          align="center"
+          className={classes.title}
+        >
+          My favourite{" "}
+          <img
+            alt="pokemon"
+            src={require("./../../images/pokemon.png")}
+            className={classes.pokemonImage}
+          />
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map((label) => (

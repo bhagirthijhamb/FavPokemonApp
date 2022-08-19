@@ -22,5 +22,9 @@
 }
 .cardActions {
   margin-bottom: 0;
-  padding: 2px 10px;
+}
+
+button.cardButton {
+  margin: 0 18px;
+  padding: 2px;
 }

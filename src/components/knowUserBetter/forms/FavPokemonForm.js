@@ -68,7 +68,6 @@ const FavPokemonForm = (props) => {
 
   useEffect(() => {
     const filteredPokemons = typeFilteredPokemonData.filter((pokemon) => {
-      console.log(searchValue);
       return pokemon.name.includes(searchValue);
     });
     setPokemonData(filteredPokemons);
@@ -101,6 +100,7 @@ const FavPokemonForm = (props) => {
           setAllPokemonData={setAllPokemonData}
           setPokemonData={setPokemonData}
           setFieldValue={setFieldValue}
+          searchValue={searchValue}
         />
       </Grid>
     </>

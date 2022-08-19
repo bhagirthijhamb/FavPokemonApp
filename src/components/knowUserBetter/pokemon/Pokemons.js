@@ -11,7 +11,9 @@ const Pokemons = ({
   setPokemonData,
   setFieldValue,
   setAllPokemonData,
+  searchValue,
 }) => {
+  const [favPokemon, setFavPokemon] = useState("");
   const offset = 0;
   const limit = 30;
 
@@ -43,13 +45,10 @@ const Pokemons = ({
       return (
         <Grid item xs={3} key={item.id}>
           <PokemonCard
-            name={item.name}
+            pokemonData={item}
             setFieldValue={setFieldValue}
-            image={
-              item.sprites.other.dream_world.front_default
-                ? item.sprites.other.dream_world.front_default
-                : item.sprites.other["official-artwork"].front_default
-            }
+            favPokemon={favPokemon}
+            setFavPokemon={setFavPokemon}
           />
         </Grid>
       );

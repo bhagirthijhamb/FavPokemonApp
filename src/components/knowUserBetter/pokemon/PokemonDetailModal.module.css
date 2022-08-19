@@ -1,0 +1,44 @@
+.modalImage {
+  width: 11rem;
+}
+
+.modalContent {
+  width: 30rem;
+  padding: 10px;
+}
+
+.modalImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalDetails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(224, 238, 244);
+  margin: 0 1rem;
+  border-radius: 6px;
+  padding: 0.4rem;
+}
+
+.modalDetails li {
+  margin-right: 2rem;
+  font-size: medium;
+}
+
+.name {
+  color: rgb(237, 84, 29);
+  font-weight: bold;
+  font-size: larger;
+  margin-left: 1.5rem;
+}
+
+.statsName {
+  color: rgb(237, 84, 29);
+  font-weight: bold;
+  font-size: small;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}

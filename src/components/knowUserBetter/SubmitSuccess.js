@@ -7,9 +7,7 @@ const SubmitSuccess = () => {
       <Typography variant="h5" gutterBottom>
         You are done!
       </Typography>
-      <Typography variant="subtitle1">
-        Click here to learn about pokemons.
-      </Typography>
+      <Typography variant="subtitle1">Please visit again.</Typography>
     </>
   );
 };

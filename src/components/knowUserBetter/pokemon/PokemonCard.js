@@ -1,29 +1,43 @@
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import PokemonDetailModal from "./PokemonDetailModal";
+import { getPokemonSpeciesData } from "./../../../api/api";
 
 import classes from "./PokemonCard.module.css";
 
-const PokemonCard = ({ id, name, setFieldValue, image }) => {
-  function buttonClickHandler(e) {
+const PokemonCard = ({
+  pokemonData,
+  setFieldValue,
+  favPokemon,
+  setFavPokemon,
+}) => {
+  const [open, setOpen] = useState(false);
+  const [pokemonSpecieInfo, setPokemonSpecieInfo] = useState("");
+
+  const { name } = pokemonData;
+  const image = pokemonData.sprites.other.dream_world.front_default
+    ? pokemonData.sprites.other.dream_world.front_default
+    : pokemonData.sprites.other["official-artwork"].front_default;
+
+  const infoClickHandler = async () => {
+    setOpen(true);
+    const pokemonSpeciesData = await getPokemonSpeciesData(name);
+    setPokemonSpecieInfo(pokemonSpeciesData);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
+  function selectClickHandler(e) {
+    // setFavPokemon("");
     setFieldValue("pokemon", e.target.value);
+    setFavPokemon(e.target.value);
   }
   return (
-    <div
-      className={classes.card}
-      // sx={{ maxWidth: 345 }}
-      // style={{
-      //   backgroundColor: "rgb(219, 241, 249)",
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      // }}
-    >
-      <img padding={2} src={image} alt="image-pokemon" />
+    <div className={classes.card}>
+      <img padding={2} src={image} alt="pokemon" />
       <div className={classes.cardContent}>
         <Typography
           gutterBottom
@@ -34,9 +48,30 @@ const PokemonCard = ({ id, name, setFieldValue, image }) => {
           {name}
         </Typography>
       </div>
+      <PokemonDetailModal
+        open={open}
+        onClose={handleClose}
+        pokemonData={pokemonData}
+        image={image}
+        pokemonSpecieInfo={pokemonSpecieInfo}
+      />
       <div className={classes.cardActions}>
-        <Button size="small">Details</Button>
-        <Button size="small" value={name} onClick={buttonClickHandler}>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={infoClickHandler}
+          className={classes.cardButton}
+        >
+          Info
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          value={name}
+          onClick={selectClickHandler}
+          className={classes.cardButton}
+          disabled={favPokemon === name}
+        >
           Select
         </Button>
       </div>
