@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import { getPokemons, getPokemonData } from "./../../../api/api";
 import PokemonCard from "./PokemonCard";
 import classes from "./Pokemons.module.css";
 
-const Pokemons = ({ setFieldValue }) => {
-  const [pokemons, setPokemons] = useState([]);
-  const [pokemonData, setPokemonData] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(16);
+const Pokemons = ({
+  pokemons,
+  setPokemons,
+  pokemonData,
+  setPokemonData,
+  setFieldValue,
+  setAllPokemonData,
+}) => {
+  const offset = 0;
+  const limit = 30;
 
   useEffect(() => {
     async function getPokemonList() {
@@ -18,7 +22,7 @@ const Pokemons = ({ setFieldValue }) => {
     }
 
     getPokemonList();
-  }, [limit, offset]);
+  }, [limit, offset, setPokemons]);
 
   useEffect(() => {
     async function getDetailedPokemonData() {
@@ -26,12 +30,12 @@ const Pokemons = ({ setFieldValue }) => {
       detailedPokemonData.sort((a, b) =>
         a.id > b.id ? 1 : b.id > a.id ? -1 : 0
       );
-
+      setAllPokemonData(detailedPokemonData);
       setPokemonData(detailedPokemonData);
     }
 
     getDetailedPokemonData();
-  }, [pokemons]);
+  }, [pokemons, setAllPokemonData, setPokemonData]);
 
   const pokemonCards =
     pokemons.length &&
@@ -51,7 +55,6 @@ const Pokemons = ({ setFieldValue }) => {
       );
     });
 
-  // return <Card className={classes.pokemonsContainer}>{pokemonCards}</Card>;
   return <>{pokemonCards}</>;
 };
 

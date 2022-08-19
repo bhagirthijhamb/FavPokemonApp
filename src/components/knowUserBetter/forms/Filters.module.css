@@ -1,0 +1,25 @@
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.filterLabel {
+  margin-right: 0.5rem;
+}
+
+.filterInput {
+  width: 7rem;
+  padding: 4px;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+}

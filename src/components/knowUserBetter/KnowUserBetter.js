@@ -42,7 +42,6 @@ function renderStepContent(step, setFieldValue) {
 }
 
 const KnowUserBetter = () => {
-  // const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
@@ -75,7 +74,7 @@ const KnowUserBetter = () => {
   return (
     <Card>
       <CardContent>
-        <Typography component="h1" variant="h4" align="center" marginBottom={2}>
+        <Typography component="h1" variant="h4" align="center">
           Know User Better
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>

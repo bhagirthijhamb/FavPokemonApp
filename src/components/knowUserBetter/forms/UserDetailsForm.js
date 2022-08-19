@@ -10,8 +10,7 @@ const UserDetailsForm = (props) => {
 
   return (
     <>
-      {/* <Typography variant="h6" gutterBottom> */}
-      <Typography component="h2" variant="h5" align="left" marginBottom={3}>
+      <Typography component="h2" variant="h5" align="left">
         User Details
       </Typography>
       <Grid container spacing={3}>

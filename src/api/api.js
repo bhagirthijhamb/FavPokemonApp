@@ -10,22 +10,17 @@ export const getPokemons = async (limit, offset) => {
 };
 
 export const getPokemonData = async (results) => {
-  console.log("results", results);
-  const pokemonArr = [],
-    filterArr = [];
+  const pokemonArr = [];
   await Promise.all(
-    results.map((pokemonItem) => {
-      return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonItem.name}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Could not fetch pokemon data");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("data", data);
-          pokemonArr.push(data);
-        });
+    results.map(async (pokemonItem) => {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonItem.name}`
+      );
+      if (!response.ok) {
+        throw new Error("Could not fetch pokemon data");
+      }
+      const data = await response.json();
+      pokemonArr.push(data);
     })
   );
   return pokemonArr;
