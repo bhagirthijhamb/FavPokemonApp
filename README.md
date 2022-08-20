@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# My Favourite Pokemon App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction to this Application
 
-## Available Scripts
+The app gathers basic user data and favourite pokemon name. This information can be used to send user's favourite pokemon soft toy to their address if the user wins a lottery.
+
+The app has a multi step form with a step progress bar. The formik library is utilized for collecting user inputs.
+First step collects user details that includes first name, last name, phone number, zipcode and address.
+
+On step two, user can select their favourite pokemon from a list fetched from PokeAPI. The user can also filter the pokemons by type or search for a specific pokemon. The user information is then validated with formik and yup.
+More information about a pokemon can be got by clicking 'INFO' button on pokemon card.
+
+Pagination feature is used for separating pokemon cards into different pages. This saves the user from a lot of scrolling and lets the pokemon data load from the api happen away from user's view.
+
+On step three, the user is provided with all the information entered in the previous steps for review and confirmation before submitting. The user can go back to the previous step and makes changes if required.
+
+The user inputs are stored as they progress through the flow. The formik-persist library is used to persist the input/selection even after the user refreshes the page.
+On submiting the form the user gets a confirmation that their submission was saved successfully.
+
+Basic unit tests are added for the landing page of the app.
+Type checking of the props passed to a component is done with prop-types library.
+
+## Deployed App
+
+Click [here](https://bhagirthijhamb.github.io/FavPokemonApp/) to visit deployed app.
+
+## Libraries
+
+formik
+formik-material-ui
+formik-persist
+yup
+material-ui
+lodash
+prop-types
+
+## Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Installs the dependencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run start`
 
-### `npm test`
+Runs the app in the development mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run test`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Launches the test runner in the interactive watch mode.

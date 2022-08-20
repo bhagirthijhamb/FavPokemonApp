@@ -5,7 +5,6 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import { Formik, Form } from "formik";
@@ -74,73 +73,71 @@ const KnowUserBetter = () => {
   }
 
   return (
-    <Card>
-      <CardContent>
-        <Typography
-          component="h1"
-          variant="h4"
-          align="center"
-          className={classes.title}
-        >
-          My favourite{" "}
-          <img
-            alt="pokemon"
-            src={require("./../../images/pokemon.png")}
-            className={classes.pokemonImage}
-          />
-        </Typography>
-        <Stepper activeStep={activeStep} className={classes.stepper}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <>
-          {activeStep === steps.length ? (
-            <SubmitSuccess />
-          ) : (
-            <Formik
-              initialValues={formInitialValues}
-              validationSchema={currentValidationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ isSubmitting, setFieldValue }) => {
-                return (
-                  <Form id={formId}>
-                    {renderStepContent(activeStep, setFieldValue)}
+    <CardContent>
+      <Typography
+        component="h1"
+        variant="h3"
+        align="center"
+        className={classes.title}
+      >
+        My favourite{" "}
+        <img
+          alt="pokemon"
+          src={require("./../../images/pokemon.png")}
+          className={classes.pokemonImage}
+        />
+      </Typography>
+      <Stepper activeStep={activeStep} className={classes.stepper}>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <>
+        {activeStep === steps.length ? (
+          <SubmitSuccess />
+        ) : (
+          <Formik
+            initialValues={formInitialValues}
+            validationSchema={currentValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, setFieldValue }) => {
+              return (
+                <Form id={formId}>
+                  {renderStepContent(activeStep, setFieldValue)}
 
-                    <div className={classes.buttons}>
-                      {activeStep !== 0 && (
-                        <Button
-                          onClick={handleBack}
-                          className={`${classes.button} ${classes.backButton}`}
-                        >
-                          Back
-                        </Button>
-                      )}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
                       <Button
-                        disabled={isSubmitting}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                        aria-label="Goto next step"
+                        onClick={handleBack}
+                        className={`${classes.button} ${classes.backButton}`}
                       >
-                        {isLastStep ? "Submit" : "Next"}
+                        Back
                       </Button>
-                      {isSubmitting && <CircularProgress size={24} />}
-                    </div>
-                    <Persist name="myFavPokemon" />
-                  </Form>
-                );
-              }}
-            </Formik>
-          )}
-        </>
-        <Footer />
-      </CardContent>
-    </Card>
+                    )}
+                    <Button
+                      disabled={isSubmitting}
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      className={classes.button}
+                      aria-label="Goto next step"
+                    >
+                      {isLastStep ? "Submit" : "Next"}
+                    </Button>
+                    {isSubmitting && <CircularProgress size={24} />}
+                  </div>
+                  <Persist name="myFavPokemon" />
+                </Form>
+              );
+            }}
+          </Formik>
+        )}
+      </>
+      <Footer />
+    </CardContent>
   );
 };
 

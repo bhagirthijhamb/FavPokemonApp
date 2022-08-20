@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { get } from "lodash";
 import Box from "@mui/material/Box";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
@@ -51,9 +52,9 @@ const PokemonDetailModal = (props) => {
     onClose(selectedValue);
   }
 
-  function handleListItemClick(value) {
-    onClose(value);
-  }
+  // function handleListItemClick(value) {
+  //   onClose(value);
+  // }
 
   function capitalizeName(name) {
     return name.charAt(0).toUpperCase() + name.substring(1);
@@ -62,7 +63,7 @@ const PokemonDetailModal = (props) => {
   const abilitiesContent =
     abilities.length &&
     abilities.map((item) => (
-      <li key={item.ability.name}>{item.ability.name}</li>
+      <li key={get(item, "ability.name")}>{get(item, "ability.name")}</li>
     ));
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -83,16 +84,20 @@ const PokemonDetailModal = (props) => {
           />
         </Box>
         <Box>
-          <Typography variant="subtitle1">About</Typography>
+          <Typography variant="subtitle1" className={classes.modalSubtitle}>
+            About
+          </Typography>
           <Box className={classes.modalDetails}>
             <Typography variant="body2">
-              {pokemonSpecieInfo.flavor_text_entries &&
-                pokemonSpecieInfo.flavor_text_entries[0].flavor_text}
+              {get(pokemonSpecieInfo, "flavor_text_entries") &&
+                get(pokemonSpecieInfo, "flavor_text_entries[0].flavor_text")}
             </Typography>
           </Box>
         </Box>
         <Box>
-          <Typography>Abilities</Typography>
+          <Typography variant="subtitle1" className={classes.modalSubtitle}>
+            Abilities
+          </Typography>
           <Box className={classes.modalDetails}>
             <ul variant="body2" className={classes.modalDetails}>
               {abilitiesContent}
@@ -100,7 +105,9 @@ const PokemonDetailModal = (props) => {
           </Box>
         </Box>
         <Box>
-          <Typography>Stats</Typography>
+          <Typography variant="subtitle1" className={classes.modalSubtitle}>
+            Stats
+          </Typography>
           <Box className={classes.modalDetails}>
             <Typography variant="body2" className={classes.statsCategory}>
               <span className={classes.statsName}>Height</span>

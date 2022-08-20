@@ -9,7 +9,7 @@ export default [
   Yup.object().shape({
     [firstName.name]: Yup.string().required(`${firstName.requiredErrorMsg}`),
     [lastName.name]: Yup.string().required(`${lastName.requiredErrorMsg}`),
-    [phoneNumber.name]: Yup.string().required(
+    [phoneNumber.name]: Yup.number().required(
       `${phoneNumber.requiredErrorMsg}`
     ),
     [zipCode.name]: Yup.string().required(`${zipCode.requiredErrorMsg}`),

@@ -3,7 +3,7 @@
 }
 
 .modalContent {
-  width: 30rem;
+  width: 28rem;
   padding: 10px;
 }
 
@@ -28,6 +28,10 @@
   font-size: medium;
 }
 
+.modalSubtitle {
+  font-weight: bold;
+}
+
 .name {
   color: rgb(237, 84, 29);
   font-weight: bold;
@@ -41,4 +45,24 @@
   font-size: small;
   margin-right: 0.5rem;
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .modalContent {
+    width: 20rem;
+    padding: 10px;
+  }
+  .modalImage {
+    width: 8rem;
+  }
+  .modalDetails {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(224, 238, 244);
+    margin: 0 1rem;
+    border-radius: 6px;
+    padding: 0.4rem;
+  }
 }

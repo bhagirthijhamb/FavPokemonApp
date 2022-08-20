@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { get } from "lodash";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import PokemonDetailModal from "./PokemonDetailModal";
@@ -17,9 +18,9 @@ const PokemonCard = ({
   const [pokemonSpecieInfo, setPokemonSpecieInfo] = useState("");
 
   const { name } = pokemonData;
-  const image = pokemonData.sprites.other.dream_world.front_default
-    ? pokemonData.sprites.other.dream_world.front_default
-    : pokemonData.sprites.other["official-artwork"].front_default;
+  const image =
+    get(pokemonData, "sprites.other.dream_world.front_default") ||
+    get(pokemonData, 'sprites.other["official-artwork"].front_default');
 
   async function infoClickHandler() {
     setOpen(true);
@@ -27,12 +28,11 @@ const PokemonCard = ({
     setPokemonSpecieInfo(pokemonSpeciesData);
   }
 
-  function handleClose(value) {
+  function handleClose() {
     setOpen(false);
   }
 
   function selectClickHandler(e) {
-    // setFavPokemon("");
     setFieldValue("pokemon", e.target.value);
     setFavPokemon(e.target.value);
   }
