@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Typography from "@mui/material/Typography";
 import classes from "./Filters.module.css";
 
 const Filters = ({
@@ -41,11 +42,11 @@ const Filters = ({
 };
 
 Filters.propTypes = {
-  types: PropTypes.object.isRequired,
-  pokemonType: PropTypes.string.isRequired,
-  onTypeChange: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
-  onSearch: PropTypes.func.isRequired,
+  types: PropTypes.array,
+  pokemonType: PropTypes.string,
+  onTypeChange: PropTypes.func,
+  searchValue: PropTypes.string,
+  onSearch: PropTypes.func,
 };
 
 export default Filters;

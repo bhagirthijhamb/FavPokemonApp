@@ -11,7 +11,7 @@ const UserDetailsForm = (props) => {
 
   return (
     <>
-      <Typography component="h2" variant="h5" align="left">
+      <Typography component="h2" variant="h5" align="left" gutterBottom>
         User Details
       </Typography>
       <Grid container spacing={3}>
@@ -40,11 +40,11 @@ const UserDetailsForm = (props) => {
 };
 
 UserDetailsForm.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
-  zipCode: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  zipCode: PropTypes.string,
+  address: PropTypes.string,
 };
 
 export default UserDetailsForm;

@@ -44,7 +44,7 @@ const Pokemons = ({
     pokemons.length && pokemonType !== "all types"
       ? pokemonData.map((item) => {
           return (
-            <Grid item xs={3} key={item.id}>
+            <Grid item xs={6} md={3} lg={3} key={item.id}>
               <PokemonCard
                 pokemonData={item}
                 setFieldValue={setFieldValue}
@@ -56,7 +56,7 @@ const Pokemons = ({
         })
       : currentData.map((item) => {
           return (
-            <Grid item xs={3} key={item.id}>
+            <Grid item xs={6} md={3} lg={3} key={item.id}>
               <PokemonCard
                 pokemonData={item}
                 setFieldValue={setFieldValue}
@@ -71,14 +71,14 @@ const Pokemons = ({
 };
 
 PokemonCard.propTypes = {
-  pokemons: PropTypes.object.isRequired,
-  setPokemons: PropTypes.func.isRequired,
-  pokemonData: PropTypes.object.isRequired,
-  setPokemonData: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
-  setAllPokemonData: PropTypes.func.isRequired,
-  currentData: PropTypes.object.isRequired,
-  pokemonType: PropTypes.string.isRequired,
+  pokemons: PropTypes.object,
+  setPokemons: PropTypes.func,
+  pokemonData: PropTypes.object,
+  setPokemonData: PropTypes.func,
+  setFieldValue: PropTypes.func,
+  setAllPokemonData: PropTypes.func,
+  currentData: PropTypes.object,
+  pokemonType: PropTypes.string,
 };
 
 export default Pokemons;

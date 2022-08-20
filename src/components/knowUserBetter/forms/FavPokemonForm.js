@@ -87,14 +87,23 @@ const FavPokemonForm = (props) => {
 
   return (
     <>
-      <Typography component="h2" variant="h5" align="left">
-        Pick your favourite Pokemon
-      </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
+          <Typography component="h3" variant="h5" align="left" gutterBottom>
+            Pick your favourite Pokemon
+          </Typography>
           <InputField name={pokemon.name} label={pokemon.label} fullWidth />
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={6}>
+          <Typography
+            component="h3"
+            variant="h5"
+            align="left"
+            paddingLeft={3}
+            gutterBottom
+          >
+            Filters
+          </Typography>
           <Filters
             types={types}
             pokemonType={pokemonType}
@@ -104,7 +113,7 @@ const FavPokemonForm = (props) => {
           />
         </Grid>
       </Grid>
-      <Grid container spacing={2} marginTop={3}>
+      <Grid container spacing={2} marginTop={1}>
         <Pokemons
           pokemons={pokemons}
           pokemonType={pokemonType}
@@ -136,8 +145,8 @@ const FavPokemonForm = (props) => {
 };
 
 FavPokemonForm.propTypes = {
-  formField: PropTypes.object.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
+  formField: PropTypes.object,
+  setFieldValue: PropTypes.func,
 };
 
 export default FavPokemonForm;

@@ -122,8 +122,8 @@ const PokemonDetailModal = (props) => {
 };
 
 PokemonDetailModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
 };
 
 export default PokemonDetailModal;

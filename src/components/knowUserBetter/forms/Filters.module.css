@@ -18,8 +18,8 @@
 }
 
 .filterInput {
-  width: 7rem;
-  padding: 4px;
-  border-radius: 3px;
+  width: 8rem;
+  padding: 8px 3px;
+  border-radius: 5px;
   border: 1px solid #bbb;
 }

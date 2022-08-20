@@ -81,10 +81,10 @@ const PokemonCard = ({
 };
 
 PokemonCard.propTypes = {
-  pokemonData: PropTypes.object.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
-  favPokemon: PropTypes.string.isRequired,
-  setFavPokemon: PropTypes.func.isRequired,
+  pokemonData: PropTypes.object,
+  setFieldValue: PropTypes.func,
+  favPokemon: PropTypes.string,
+  setFavPokemon: PropTypes.func,
 };
 
 export default PokemonCard;

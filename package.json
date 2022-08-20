@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
     "formik-material-ui": "^4.0.0-alpha.2",
+    "formik-persist": "^1.1.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",

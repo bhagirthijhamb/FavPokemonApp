@@ -4711,7 +4711,15 @@
   "resolved" "https://registry.npmjs.org/formik-material-ui/-/formik-material-ui-4.0.0-alpha.2.tgz"
   "version" "4.0.0-alpha.2"
 
-"formik@^2.2.9", "formik@>=2.2.9":
+"formik-persist@^1.1.0":
+  "integrity" "sha512-tZyyghHinnoqptYVD8vfkN8rg8sFKIuc1INFpuspTXffq1H8eeI1aYFiyoq2gNE1qIVJfPy+bzUItx/9qyO8Hw=="
+  "resolved" "https://registry.npmjs.org/formik-persist/-/formik-persist-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "lodash.debounce" "^4.0.8"
+    "react-fast-compare" "^2.0.1"
+
+"formik@*", "formik@^2.2.9", "formik@>=2.2.9":
   "integrity" "sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA=="
   "resolved" "https://registry.npmjs.org/formik/-/formik-2.2.9.tgz"
   "version" "2.2.9"
@@ -7687,7 +7695,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=16.6.0", "react@>=16.8.0", "react@>=17.0.2":
+"react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=15", "react@>=16.6.0", "react@>=16.8.0", "react@>=17.0.2":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"

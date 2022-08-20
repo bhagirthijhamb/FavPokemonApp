@@ -74,6 +74,7 @@ const Pagination = (props) => {
             <li
               key={pageNumber}
               className={pillClassesHnadler(pageNumber)}
+              aria-current={pageNumber === currentPage ? "page" : "false"}
               onClick={() => onPageChange(pageNumber)}
             >
               {pageNumber}
@@ -90,12 +91,12 @@ const Pagination = (props) => {
 };
 
 Pagination.propTypes = {
-  onPageChange: PropTypes.func.isRequired,
-  totalCount: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func,
+  totalCount: PropTypes.number,
   siblingCount: PropTypes.number,
-  currentPage: PropTypes.number.isRequired,
-  pageSize: PropTypes.number.isRequired,
-  className: PropTypes.string.isRequired,
+  currentPage: PropTypes.number,
+  pageSize: PropTypes.number,
+  className: PropTypes.string,
 };
 
 export default Pagination;

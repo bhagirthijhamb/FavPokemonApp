@@ -9,11 +9,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import { Formik, Form } from "formik";
+import { Persist } from "formik-persist";
 
 import UserDetailsForm from "./forms/UserDetailsForm";
 import FavPokemonForm from "./forms/FavPokemonForm";
 import SubmitConfirmation from "./SubmitConfirmation";
 import SubmitSuccess from "./SubmitSuccess";
+import Footer from "../ui/Footer";
 
 import classes from "./KnowUserBetter.module.css";
 
@@ -21,7 +23,7 @@ import validationSchema from "./formModel/validationSchema";
 import knowUserBetterFormModel from "./formModel/knowUserBetterFormModel";
 import formInitialValues from "./formModel/formInitialValues";
 
-const steps = ["User Details", "Favourite Pokemon", "Confirmation"];
+const steps = ["User Detail", "Favourite Pokemon", "Confirmation"];
 const { formId, formField } = knowUserBetterFormModel;
 
 function renderStepContent(step, setFieldValue) {
@@ -52,9 +54,9 @@ const KnowUserBetter = () => {
 
   async function submitForm(values, actions) {
     await sleep(1000);
-    // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
+    localStorage.removeItem("myFavPokemon");
   }
 
   function handleSubmit(values, actions) {
@@ -110,7 +112,10 @@ const KnowUserBetter = () => {
 
                     <div className={classes.buttons}>
                       {activeStep !== 0 && (
-                        <Button onClick={handleBack} className={classes.button}>
+                        <Button
+                          onClick={handleBack}
+                          className={`${classes.button} ${classes.backButton}`}
+                        >
                           Back
                         </Button>
                       )}
@@ -120,17 +125,20 @@ const KnowUserBetter = () => {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        aria-label="Goto next step"
                       >
                         {isLastStep ? "Submit" : "Next"}
                       </Button>
                       {isSubmitting && <CircularProgress size={24} />}
                     </div>
+                    <Persist name="myFavPokemon" />
                   </Form>
                 );
               }}
             </Formik>
           )}
         </>
+        <Footer />
       </CardContent>
     </Card>
   );
