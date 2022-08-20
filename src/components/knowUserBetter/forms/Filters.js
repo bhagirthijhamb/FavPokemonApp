@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classes from "./Filters.module.css";
 
 const Filters = ({
@@ -37,6 +38,14 @@ const Filters = ({
       </div>
     </>
   );
+};
+
+Filters.propTypes = {
+  types: PropTypes.object.isRequired,
+  pokemonType: PropTypes.string.isRequired,
+  onTypeChange: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default Filters;

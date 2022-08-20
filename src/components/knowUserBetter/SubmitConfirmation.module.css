@@ -1,0 +1,13 @@
+.userDetail {
+  text-align: left;
+  padding-left: 9rem;
+}
+
+.userDetailTitle {
+  font-weight: bold;
+  color: #333;
+}
+
+.userDetailValue {
+  color: #777;
+}

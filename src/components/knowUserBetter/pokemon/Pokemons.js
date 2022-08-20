@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
 import { getPokemons, getPokemonData } from "./../../../api/api";
 import PokemonCard from "./PokemonCard";
-import classes from "./Pokemons.module.css";
 
 const Pokemons = ({
   pokemons,
@@ -11,11 +11,12 @@ const Pokemons = ({
   setPokemonData,
   setFieldValue,
   setAllPokemonData,
-  searchValue,
+  currentData,
+  pokemonType,
 }) => {
   const [favPokemon, setFavPokemon] = useState("");
   const offset = 0;
-  const limit = 30;
+  const limit = 100;
 
   useEffect(() => {
     async function getPokemonList() {
@@ -40,21 +41,44 @@ const Pokemons = ({
   }, [pokemons, setAllPokemonData, setPokemonData]);
 
   const pokemonCards =
-    pokemons.length &&
-    pokemonData.map((item) => {
-      return (
-        <Grid item xs={3} key={item.id}>
-          <PokemonCard
-            pokemonData={item}
-            setFieldValue={setFieldValue}
-            favPokemon={favPokemon}
-            setFavPokemon={setFavPokemon}
-          />
-        </Grid>
-      );
-    });
+    pokemons.length && pokemonType !== "all types"
+      ? pokemonData.map((item) => {
+          return (
+            <Grid item xs={3} key={item.id}>
+              <PokemonCard
+                pokemonData={item}
+                setFieldValue={setFieldValue}
+                favPokemon={favPokemon}
+                setFavPokemon={setFavPokemon}
+              />
+            </Grid>
+          );
+        })
+      : currentData.map((item) => {
+          return (
+            <Grid item xs={3} key={item.id}>
+              <PokemonCard
+                pokemonData={item}
+                setFieldValue={setFieldValue}
+                favPokemon={favPokemon}
+                setFavPokemon={setFavPokemon}
+              />
+            </Grid>
+          );
+        });
 
-  return <>{pokemonCards}</>;
+  return <>{pokemonCards} </>;
+};
+
+PokemonCard.propTypes = {
+  pokemons: PropTypes.object.isRequired,
+  setPokemons: PropTypes.func.isRequired,
+  pokemonData: PropTypes.object.isRequired,
+  setPokemonData: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  setAllPokemonData: PropTypes.func.isRequired,
+  currentData: PropTypes.object.isRequired,
+  pokemonType: PropTypes.string.isRequired,
 };
 
 export default Pokemons;

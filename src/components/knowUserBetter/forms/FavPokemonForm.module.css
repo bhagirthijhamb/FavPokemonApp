@@ -1,3 +1,9 @@
 .pokemonSection {
   margin-top: 1.5rem;
 }
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

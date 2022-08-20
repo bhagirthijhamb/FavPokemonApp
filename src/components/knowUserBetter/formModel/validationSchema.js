@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import knowUserBetterFormModel from "./knowUserBetterFormModel";
 const {
-  formField: { firstName, lastName, phoneNumber, address, pokemon },
+  formField: { firstName, lastName, phoneNumber, zipCode, address, pokemon },
 } = knowUserBetterFormModel;
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -12,6 +12,7 @@ export default [
     [phoneNumber.name]: Yup.string().required(
       `${phoneNumber.requiredErrorMsg}`
     ),
+    [zipCode.name]: Yup.string().required(`${zipCode.requiredErrorMsg}`),
     [address.name]: Yup.string().required(`${address.requiredErrorMsg}`),
   }),
   Yup.object().shape({

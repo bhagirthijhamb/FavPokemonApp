@@ -47,17 +47,17 @@ const PokemonDetailModal = (props) => {
     pokemonSpecieInfo,
   } = props;
 
-  const handleClose = () => {
+  function handleClose() {
     onClose(selectedValue);
-  };
+  }
 
-  const handleListItemClick = (value) => {
+  function handleListItemClick(value) {
     onClose(value);
-  };
+  }
 
-  const capitalizeName = (name) => {
+  function capitalizeName(name) {
     return name.charAt(0).toUpperCase() + name.substring(1);
-  };
+  }
 
   const abilitiesContent =
     abilities.length &&

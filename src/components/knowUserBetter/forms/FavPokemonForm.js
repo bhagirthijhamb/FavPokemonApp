@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import InputField from "./InputField";
 import Pokemons from "../pokemon/Pokemons";
 import Filters from "./Filters";
+import Pagination from "./../../ui/Pagination";
 import classes from "./FavPokemonForm.module.css";
+
+let PageSize = 12;
 
 const FavPokemonForm = (props) => {
   // pokemon list
@@ -16,6 +20,8 @@ const FavPokemonForm = (props) => {
   const [typeFilteredPokemonData, setTypeFilteredPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("all types");
   const [searchValue, setSearchValue] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const {
     formField: { pokemon },
@@ -73,6 +79,12 @@ const FavPokemonForm = (props) => {
     setPokemonData(filteredPokemons);
   }, [searchValue, typeFilteredPokemonData]);
 
+  const currentData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return pokemonData.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, pokemonData]);
+
   return (
     <>
       <Typography component="h2" variant="h5" align="left">
@@ -95,16 +107,37 @@ const FavPokemonForm = (props) => {
       <Grid container spacing={2} marginTop={3}>
         <Pokemons
           pokemons={pokemons}
+          pokemonType={pokemonType}
           setPokemons={setPokemons}
           pokemonData={pokemonData}
+          currentData={currentData}
           setAllPokemonData={setAllPokemonData}
           setPokemonData={setPokemonData}
           setFieldValue={setFieldValue}
           searchValue={searchValue}
         />
       </Grid>
+      <Grid
+        container
+        spacing={2}
+        marginTop={2}
+        className={classes.paginationContainer}
+      >
+        <Pagination
+          className={classes.paginationBar}
+          currentPage={currentPage}
+          totalCount={pokemonData.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </Grid>
     </>
   );
+};
+
+FavPokemonForm.propTypes = {
+  formField: PropTypes.object.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default FavPokemonForm;

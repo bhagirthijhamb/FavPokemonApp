@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import PokemonDetailModal from "./PokemonDetailModal";
@@ -20,15 +21,15 @@ const PokemonCard = ({
     ? pokemonData.sprites.other.dream_world.front_default
     : pokemonData.sprites.other["official-artwork"].front_default;
 
-  const infoClickHandler = async () => {
+  async function infoClickHandler() {
     setOpen(true);
     const pokemonSpeciesData = await getPokemonSpeciesData(name);
     setPokemonSpecieInfo(pokemonSpeciesData);
-  };
+  }
 
-  const handleClose = (value) => {
+  function handleClose(value) {
     setOpen(false);
-  };
+  }
 
   function selectClickHandler(e) {
     // setFavPokemon("");
@@ -77,6 +78,13 @@ const PokemonCard = ({
       </div>
     </div>
   );
+};
+
+PokemonCard.propTypes = {
+  pokemonData: PropTypes.object.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  favPokemon: PropTypes.string.isRequired,
+  setFavPokemon: PropTypes.func.isRequired,
 };
 
 export default PokemonCard;

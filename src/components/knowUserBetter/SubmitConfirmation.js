@@ -1,35 +1,91 @@
 import React from "react";
 import { useFormikContext } from "formik";
-import Container from "@mui/material/Container";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import Grid from "@mui/material/Grid";
+import { Typography } from "@mui/material";
+
+import classes from "./SubmitConfirmation.module.css";
 
 const SubmitConfirmation = () => {
   const { values: formValues } = useFormikContext();
-  const { firstName, lastName, phoneNumber, address, pokemon } = formValues;
+  const { firstName, lastName, phoneNumber, zipCode, address, pokemon } =
+    formValues;
+
   return (
-    <Container component="main" maxWidth="xs">
-      <div>
-        <List>
-          <ListItem>
-            <ListItemText primary="First Name" secondary={firstName} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Last Name" secondary={lastName} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Phone Number" secondary={phoneNumber} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Address" secondary={address} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Pokemon" secondary={pokemon} />
-          </ListItem>
-        </List>
-      </div>
-    </Container>
+    <Grid container spacing={3}>
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          First Name
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {firstName}
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          Last Name
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {lastName}
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          Phone Number
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {phoneNumber}
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          Zipcode
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {zipCode}
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          Address
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {address}
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailTitle}`}
+        >
+          Favourite Pokemon
+        </Typography>
+        <Typography
+          className={`${classes.userDetail} ${classes.userDetailValue}`}
+        >
+          {pokemon}
+        </Typography>
+      </Grid>
+    </Grid>
   );
 };
 

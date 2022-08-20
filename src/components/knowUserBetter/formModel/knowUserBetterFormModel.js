@@ -17,6 +17,11 @@ export default {
       label: "Phone number*",
       requiredErrorMsg: "Phone number is required",
     },
+    zipCode: {
+      name: "zipCode",
+      label: "Zipcode*",
+      requiredErrorMsg: "Zipcode is required",
+    },
     address: {
       name: "address",
       label: "Address*",

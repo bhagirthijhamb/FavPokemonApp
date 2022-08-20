@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputField from "./InputField";
 
 const UserDetailsForm = (props) => {
   const {
-    formField: { firstName, lastName, phoneNumber, address },
+    formField: { firstName, lastName, phoneNumber, zipCode, address },
   } = props;
 
   return (
@@ -20,12 +21,15 @@ const UserDetailsForm = (props) => {
         <Grid item xs={12} sm={6}>
           <InputField name={lastName.name} label={lastName.label} fullWidth />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <InputField
             name={phoneNumber.name}
             label={phoneNumber.label}
             fullWidth
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputField name={zipCode.name} label={zipCode.label} fullWidth />
         </Grid>
         <Grid item xs={12}>
           <InputField name={address.name} label={address.label} fullWidth />
@@ -33,6 +37,14 @@ const UserDetailsForm = (props) => {
       </Grid>
     </>
   );
+};
+
+UserDetailsForm.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+  zipCode: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
 };
 
 export default UserDetailsForm;

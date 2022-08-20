@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useField } from "formik";
 import TextField from "@mui/material/TextField";
 import { at } from "lodash";
@@ -24,6 +25,10 @@ const InputField = (props) => {
       {...rest}
     />
   );
+};
+
+InputField.propTypes = {
+  errorText: PropTypes.string,
 };
 
 export default InputField;
