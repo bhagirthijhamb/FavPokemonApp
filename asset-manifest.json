@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/FavPokemonApp/static/css/main.7bc455dc.css",
+    "main.js": "/FavPokemonApp/static/js/main.4ec2ec06.js",
+    "static/js/787.c515b033.chunk.js": "/FavPokemonApp/static/js/787.c515b033.chunk.js",
+    "static/media/pokemon-2.webp": "/FavPokemonApp/static/media/pokemon-2.67a2ffe02ad19a6a6163.webp",
+    "index.html": "/FavPokemonApp/index.html",
+    "main.7bc455dc.css.map": "/FavPokemonApp/static/css/main.7bc455dc.css.map",
+    "main.4ec2ec06.js.map": "/FavPokemonApp/static/js/main.4ec2ec06.js.map",
+    "787.c515b033.chunk.js.map": "/FavPokemonApp/static/js/787.c515b033.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bc455dc.css",
+    "static/js/main.4ec2ec06.js"
+  ]
+}
